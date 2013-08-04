@@ -1,0 +1,80 @@
+<html lang="en-us" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<meta content="刘若霖" name="author">
+	<title> Catalog | 刘若霖 </title>
+	<link href="style.css" rel="stylesheet">
+	</link>
+	<script type="text/javascript">
+		function toggleMe(a){
+		var e=document.getElementById(a);
+		if(!e)return true;
+		if(e.style.display=="none"){
+		e.style.display="block"
+		} else {
+		e.style.display="none"
+		}
+		return true;
+		}
+	</script>
+  </head>
+  <body>
+	<div id="container">
+		<div id="main" role="main">
+			<header>
+				<h1>Bioinformatics FAQ</h1>
+			</header>
+			<nav>
+				<span>
+					<a class="" href="home.html" title="home page">HOME</a>
+				<span>
+					<a class="" href="about.html" title="about">ABOUT</a>
+				<span>
+					<a class="" href="publication.html" title="publication">PUBLICATION</a>
+				<span>
+					<a class="" href="vitae.html" title="vitea">VITAE</a>
+				<span>
+					<a class="" href="script" title='script'>SCRIPT</a>
+			</nav>
+			<article class="content">
+			  <section class="post">
+			  
+				<div class="post-item">
+				<input type="button" class="button" onclick="return toggleMe('para0')" value="What is bioinformatics?">
+				<time datetime="2013-07-14">2013-07-14 post by Ruolin Liu</time>
+				</div>				
+				<div id="para0" style="display:block">
+				Bioinformatics is a subject that solve biological problem by computational way.
+				</div>				
+				
+				<div class="post-item">
+				<input type="button" class="button" onclick="return toggleMe('para1')" value="Origin of bioinformatics?">
+				<time datetime="2013-07-14">2013-07-14 post by Ruolin Liu</time>
+				</div>
+				<div id="para1" style="display:block">
+				Bioinformatics as a term appeared in the literature until 1991. However the endeavor of buiiding databases.
+				developing algorithms and making biological discoveries by sequence analysis has been in existence for more
+				than 30 years.
+				</div>
+				
+				<div class="post-item">
+				<input type="button" class="button" onclick="return toggleMe('para2')" value="Does pair-end read have to be strand specific">
+				<time datetime="2013-07-14">2013-07-24 post by Ruolin Liu</time>
+				</div>
+				<div id="para2" style="display:block">
+				I found these two concepts are very confusing, strand specific vs non strand-specific and paired-end vs single-end.
+				Actually they point to different stages of RNA sequencing and therefore are completely independent.  Strand-specific 
+				library is made during library preparation either by tagging one strand or by degrading one strand. The strand that 
+				are amplified and then sequenced can be either the first cDNA strand or the second cDNA strand, depending on the 
+				protocol. However due to the fact that primer is extended only from 5’ -> 3’, the end that is sequenced first is the 
+				right most end if first cDNA strand synthesis and left most end if second cDNA strand synthesis.  Therefore, for the 
+				first strand synthesis the paired end read has to be RF orientation and read from second strand synthesis has be to 
+				FR orientation. For a non strand-specific library RNAseq, it can be both cases.  
+				</div>
+			  </section>
+			</article>
+		</div>
+	</div>
+  </body>
+	
+</html>
