@@ -22,7 +22,7 @@
 	<div id="container">
 		<div id="main" role="main">
 			<header>
-				<h1>Bioinformatics FAQ</h1>
+				<h1>Bioinformatics, Python, Algorithm and Others</h1>
 			</header>
 			<nav>
 				<span>
@@ -34,34 +34,15 @@
 				<span>
 					<a class="" href="vitae.html" title="vitea">VITAE</a>
 				<span>
-					<a class="" href="script" title='script'>SCRIPT</a>
+					<a class="" href="script.html" title='script'>SCRIPT</a>
 			</nav>
 			<article class="content">
-			  <section class="post">
-			  
+			  <section class="post">		  				
 				<div class="post-item">
-				<input type="button" class="button" onclick="return toggleMe('para0')" value="What is bioinformatics?">
-				<time datetime="2013-07-14">2013-07-14 post by Ruolin Liu</time>
-				</div>				
-				<div id="para0" style="display:block">
-				Bioinformatics is a subject that solve biological problem by computational way.
-				</div>				
-				
-				<div class="post-item">
-				<input type="button" class="button" onclick="return toggleMe('para1')" value="Origin of bioinformatics?">
-				<time datetime="2013-07-14">2013-07-14 post by Ruolin Liu</time>
-				</div>
-				<div id="para1" style="display:block">
-				Bioinformatics as a term appeared in the literature until 1991. However the endeavor of buiiding databases.
-				developing algorithms and making biological discoveries by sequence analysis has been in existence for more
-				than 30 years.
-				</div>
-				
-				<div class="post-item">
-				<input type="button" class="button" onclick="return toggleMe('para2')" value="Does pair-end read have to be strand specific">
+				<input type="button" class="button" onclick="return toggleMe('para1')" value="Does pair-end read have to be strand specific?">
 				<time datetime="2013-07-14">2013-07-24 post by Ruolin Liu</time>
 				</div>
-				<div id="para2" style="display:block">
+				<div id="para1" style="display:block">
 				I found these two concepts are very confusing, strand specific vs non strand-specific and paired-end vs single-end.
 				Actually they point to different stages of RNA sequencing and therefore are completely independent.  Strand-specific 
 				library is made during library preparation either by tagging one strand or by degrading one strand. The strand that 
@@ -69,7 +50,55 @@
 				protocol. However due to the fact that primer is extended only from 5’ -> 3’, the end that is sequenced first is the 
 				right most end if first cDNA strand synthesis and left most end if second cDNA strand synthesis.  Therefore, for the 
 				first strand synthesis the paired end read has to be RF orientation and read from second strand synthesis has be to 
-				FR orientation. For a non strand-specific library RNAseq, it can be both cases.  
+				FR orientation. For a non strand-specific library RNAseq, it can be both cases. 
+				</div>
+				<!--POST-->
+				<div class="post-item">
+				<input type="button" class="button" onclick="return toggleMe('para2')" value="Is Python pass-by-value or pass-by-reference?">
+				<time datetime="2013-07-14">2013-08-05 post by Ruolin Liu</time>
+				</div>
+				<div id="para2" style="display:block">
+				When I switched from C++ to Python, I found the argument passing was quite a lot easier because you don't need to pre-decided
+				whether you need the argument is passed by reference or pass by value. However, how on earth does Python handle argument passing? I found
+				the answer from <a href="http://stackoverflow.com/questions/986006/python-how-do-i-pass-a-variable-by-reference"> StackOverFlow</a>.
+				In a nutshell, it is neither pass-by-value or pass-by-reference. It is call-by-object or call-by-sharing. You might ask "what the
+				hell does it mean?" To understand this you need to know a fundamental concept in Python
+				<a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#other-languages-have-variables">Other Languages
+				have "variables"; Python has "names"</a>. Names live in namespace. When a method is called a local namespace is created. Remember it
+				will be destroyed after the call. If a method receives a object, it attaches a name to it. Now the object has two names. If the object is 
+				mutable, you may either access to the object by the newly created name and then do some change to the object or you may create a new object and 
+				assign it to this name. In the former situation, the original object is changed. In the latter situation, the original object is intact.
+				The other way to understand this is illustrated by the highest voted answer. Theoretically this answer is wrong, but practically it is useful.
+				</div>
+				<!--POST-->
+				<div class="post-item">
+				<input type="button" class="button" onclick="return toggleMe('para3')" value="How to find all paths in DAG?">
+				<time datetime="2013-07-14">2013-08-07 post by Ruolin Liu</time>
+				</div>
+				<div id="para3" style="display:block">
+				DAG means Directed Acyclic Graph. <a href="http://www.technical-recipes.com/2011/a-recursive-algorithm-to-find-all-paths-between-two-given-nodes/">This recursive algorithm </a>
+				finds all paths between two given nodes in DAG. The implementation can be found<a> here</a>, it was written using Python2.7. The Python-like pseudocode is shown here.   
+				<p></p>
+				<pre class='prettyprint'>
+<font color=#41A317>#Graph is stored as nodes with two pointers: one points to list of parents nodes</font>
+<font color=#41A317>#the other points to list of children nodes</font>
+<font color=#72A4D2>def</font> findAllPath(graph, visit_set, target):
+	children_nodes = visit[-1].children
+	<font color=#72A4D2>for</font> each <font color=#72A4D2>in</font> children_nodes:
+		<font color=#72A4D2>if</font> each <font color=#72A4D2>in</font> visit_set: <font color=#72A4D2>continue</font>
+		<font color=#72A4D2>if</font> each is target:
+			visit_set.append(each)
+			print visit_set
+			visit_set.pop()
+			<font color=#72A4D2>break</font>
+			
+	<font color=#72A4D2>for</font> each <font color=#72A4D2>in</font> children_nodes:
+		<font color=#72A4D2>if</font> each <font color=#72A4D2>in</font> visit_set <font color=#72A4D2>or</font> each == target:
+			<font color=#72A4D2>continue</font>
+		visit_set.append(each)
+		findAllPath(graph,visit_set,target)
+		visit_set.pop()
+				</pre>
 				</div>
 			  </section>
 			</article>
